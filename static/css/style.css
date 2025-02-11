@@ -1,5 +1,69 @@
-*, body {
+*, *::before, *::after {
   box-sizing: border-box;
+}
+body {
   margin: 0;
-  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: whitesmoke;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
+}
+
+#input-todo {
+  width: 250px;
+  height: 40px;
+  font-size: 1.25rem;
+}
+
+#add-todo {
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 40px;
+  background-color: lightgreen;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  margin: auto;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightblue;
+  border-radius: 5px;
+  padding: 0px 10px;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.actions > form {
+  display: inline;
+}
+
+.actions > form > button {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.2rem;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }

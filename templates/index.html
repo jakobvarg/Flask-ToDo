@@ -3,16 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Flask Todo List</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css\style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    
-    <script src="" async defer></script>
+    <h1>Todo List Flask</h1>
+    <form class="input-container" action="{{ url_for('home') }}" method="POST">
+      <input type="text" placeholder="Enter Todo" id="input-todo" name="todo-name" >
+      <button id="add-todo">+</button>
+    </form>
+      <h2>Todos</h2>
+      <div class="todo-container">
+        {% for task in items %}
+          <div class="todo">
+            <p>{{task.task}}</p>
+            <div class="actions">
+              <!-- the checkbox should be inside a form with the action and method defined else on page refresh -->
+               <!-- checkbox if checked will be unchecked on page refresh unless hardcoded as checked in list of directories -->
+              <form action="{{ url_for('checked_todo', todo_id=task.id) }}" method="POST">
+                <input type="checkbox" {% if task.checked %}checked{% endif %} onchange="this.form.submit()">
+              </form>
+              <form action="{{ url_for('delete_todo', todo_id=task.id) }}" method="POST">
+                <button>Delete</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
   </body>
 </html>
